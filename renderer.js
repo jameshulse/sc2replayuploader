@@ -12,5 +12,6 @@ document.querySelector('#cancel').addEventListener('click', () => {
 
 document.querySelector('#save').addEventListener('click', async () => {
     await ipcRenderer.send('set-hash', hashInput.textContent);
+
     remote.getCurrentWindow().hide();
 });

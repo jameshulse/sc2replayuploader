@@ -33,9 +33,7 @@ function createWindow() {
         width: 300,
         height: 200,
         show: false,
-        alwaysOnTop: true,
         acceptFirstMouse: true,
-        closable: false,
         frame: false
     });
 
