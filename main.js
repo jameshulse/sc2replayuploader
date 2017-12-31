@@ -8,7 +8,7 @@ const randomstring = require('randomstring');
 const fs = require('fs');
 
 if (fs.existsSync('hashkey.txt')) {
-    global.hashKey = fs.readFileSync('hashkey.txt');
+    global.hashKey = fs.readFileSync('hashkey.txt', 'utf-8');
 } else {
     global.hashKey = '';
 }
@@ -26,18 +26,27 @@ if (fs.existsSync('manifest.json')) {
 
 ipcMain.on('set-hash', (event, arg) => {
     global.hashKey = arg;
+
+    fs.writeFileSync('hashkey.txt', arg, 'utf-8');
 });
 
 function createWindow() {
     window = new BrowserWindow({
-        width: 300,
-        height: 200,
+        width: 250,
+        height: 220,
         show: false,
         acceptFirstMouse: true,
-        frame: false
+        frame: false,
+        resizable: false
     });
 
     window.loadURL(`file://${path.join(__dirname, 'index.html')}`);
+
+    if (global.hashKey) {
+        ipcMain.emit('show-hash', global.hashKey);
+    } else {
+        window.show();
+    }
 }
 
 function watchForReplays(user) {
@@ -51,8 +60,6 @@ function watchForReplays(user) {
         if (manifest.indexOf(file) !== -1) {
             return;
         }
-
-        console.log(`New replay ${file}`)
 
         request.post('https://sc2replaystats.com/upload_replay.php', {
             formData: {
@@ -88,7 +95,6 @@ function createTray() {
         { label: 'Settings', click: () => window.show() },
         {
             label: 'Quit', click: () => {
-                console.log('try close');
                 window.close();
             }
         }
