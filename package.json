@@ -1,0 +1,20 @@
+{
+  "name": "sc2macstats",
+  "version": "0.1",
+  "description": "Auto-upload Starcraft 2 Replays",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "repository": "https://github.com/electron/electron-quick-start",
+  "devDependencies": {
+    "electron": "~1.7.8"
+  },
+  "dependencies": {
+    "chokidar": "^2.0.0",
+    "form-data": "^2.3.1",
+    "randomstring": "^1.1.5",
+    "request": "^2.83.0",
+    "username": "^3.0.0"
+  }
+}
