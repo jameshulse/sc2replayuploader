@@ -6,9 +6,17 @@ const username = require('username');
 const request = require('request');
 const randomstring = require('randomstring');
 const fs = require('fs');
+const mkdirp = require('mkdirp');
 
-if (fs.existsSync('hashkey.txt')) {
-    global.hashKey = fs.readFileSync('hashkey.txt', 'utf-8');
+let appDataPath = path.join(app.getAppPath('appData'), 'sc2replaystats');
+
+mkdirp.sync(appDataPath);
+
+let hashKeyPath = path.join(appDataPath, 'hashkey.txt');
+
+if (fs.existsSync(hashKeyPath)) {
+
+    global.hashKey = fs.readFileSync(hashKeyPath, 'utf-8');
 } else {
     global.hashKey = '';
 }
@@ -27,7 +35,7 @@ if (fs.existsSync('manifest.json')) {
 ipcMain.on('set-hash', (event, arg) => {
     global.hashKey = arg;
 
-    fs.writeFileSync('hashkey.txt', arg, 'utf-8');
+    fs.writeFileSync(hashKeyPath, arg, 'utf-8');
 });
 
 function createWindow() {
