@@ -1,0 +1,10 @@
+version: 0.2.0
+files:
+  - url: sc2macstats-0.2.0-mac.zip
+    sha512: iX5OFdforHvntjZ4LKKgNT+ithCU1N2BEekSFbJtVrYsWIUspE2kkoLuuKTCGAlpc2hS+6mYwFQRQ7MyKFeKlw==
+  - url: sc2macstats-0.2.0.dmg
+    sha512: s4aoQL66MRjKs2+stpYIlkNTzb1DISv7IGzl27u2q1ZHfRdYHMfPrZq0mzO2WJwSkkiuV0BkJVtK9At7hPGAoA==
+    size: 49410269
+path: sc2macstats-0.2.0-mac.zip
+sha512: iX5OFdforHvntjZ4LKKgNT+ithCU1N2BEekSFbJtVrYsWIUspE2kkoLuuKTCGAlpc2hS+6mYwFQRQ7MyKFeKlw==
+releaseDate: '2017-12-31T15:37:14.817Z'

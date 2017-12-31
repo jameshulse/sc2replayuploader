@@ -89,7 +89,7 @@ function watchForReplays(user) {
 }
 
 function createTray() {
-    tray = new Tray(path.join(__dirname, 'sc2.png'));
+    tray = new Tray(path.join(__dirname, 'sc2small.png'));
 
     tray.setContextMenu(Menu.buildFromTemplate([
         { label: 'Settings', click: () => window.show() },

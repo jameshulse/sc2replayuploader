@@ -1,14 +1,21 @@
 {
   "name": "sc2macstats",
-  "version": "0.1",
+  "version": "0.2.0",
+  "author": {
+    "name": "James Hulse",
+    "email": "james@hatchapps.co.uk"
+  },
   "description": "Auto-upload Starcraft 2 Replays",
   "main": "main.js",
   "scripts": {
-    "start": "electron ."
+    "start": "electron .",
+    "build": "electron-builder",
+    "release": "build"
   },
-  "repository": "https://github.com/electron/electron-quick-start",
+  "repository": "https://github.com/jameshulse/sc2replayuploader",
   "devDependencies": {
-    "electron": "~1.7.8"
+    "electron": "~1.7.8",
+    "electron-builder": "^19.49.4"
   },
   "dependencies": {
     "chokidar": "^2.0.0",
@@ -16,5 +23,8 @@
     "randomstring": "^1.1.5",
     "request": "^2.83.0",
     "username": "^3.0.0"
+  },
+  "build": {
+    "publish": ["github"]
   }
 }
