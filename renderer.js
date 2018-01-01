@@ -1,5 +1,11 @@
-const { ipcMain } = require('electron');
+const { ipcMain, shell } = require('electron');
 const { remote, ipcRenderer } = require('electron');
+
+document.querySelectorAll('a[href^="http"]')
+        .forEach(a => a.addEventListener('click', () => {
+            event.preventDefault();
+            shell.openExternal(a.href);
+        }));
 
 let hashInput = document.querySelector('#hashKey');
 

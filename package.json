@@ -5,6 +5,7 @@
     "name": "James Hulse",
     "email": "james@hatchapps.co.uk"
   },
+  "license": "MIT",
   "description": "Auto-upload Starcraft 2 Replays",
   "main": "main.js",
   "scripts": {
