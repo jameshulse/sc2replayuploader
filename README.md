@@ -2,12 +2,10 @@
 
 Automatically watches your replay directory and uploads new replays to sc2replaystats.com
 
+# Installation
+
+Go to the [Releases](https://github.com/jameshulse/sc2replayuploader/releases) tab on github and download the most recent .dmg or .zip.
+
 # Setup
 
-Create a file in the root directory named 'hashkey.txt' with your hash key from sc2replaystats.
-
-To get the key download their desktop application from their site, unzip and open the hashkey file. Copy out just the alphnumeric code (without the XML stuff) and paste it in a new hashkey.txt file in the root of this application.
-
-# Build + Run
-
-Run `yarn` then `yarn start`
+Once the application is running, click the tray icon and go in to settings. Here you need to enter your sc2replaystats 'hash key'. Your hash can be found here: https://sc2replaystats.com/account/download (at the bottom of the page). Simply paste the value across and click 'Save'.
