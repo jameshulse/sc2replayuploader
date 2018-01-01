@@ -72,6 +72,7 @@ function watchForReplays(user) {
         request.post('https://sc2replaystats.com/upload_replay.php', {
             formData: {
                 'token': randomstring.generate(32),
+                'upload_method': 'jameshulse_mac_uploader',
                 'hashkey': global.hashKey,
                 'timestamp': Math.round(+new Date() / 1000),
                 'Filedata': {
