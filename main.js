@@ -1,11 +1,13 @@
 const { app, ipcMain } = require('electron');
 
 const username = require('username');
+
 const tray = require('./app/tray');
 const appDataPath = require('./app/appData');
 const hashkey = require('./app/hashkey');
 const watch = require('./app/watch');
 const window = require('./app/window');
+const startup = require('./app/startup');
 
 require('./app/menu');
 
@@ -17,6 +19,14 @@ ipcMain.on('set-hash', (event, arg) => {
     global.hashKey = arg;
 
     hashkey.save(arg);
+});
+
+ipcMain.on('toggle-startup', (event, arg) => {
+    if (arg) {
+        startup.enable();
+    } else {
+        startup.disable();
+    }
 });
 
 app.on('ready', async () => {
