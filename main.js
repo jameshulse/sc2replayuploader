@@ -13,9 +13,9 @@ let appDataPath = path.join(app.getAppPath('appData'), 'sc2replaystats');
 mkdirp.sync(appDataPath);
 
 let hashKeyPath = path.join(appDataPath, 'hashkey.txt');
+let manifestPath = path.join(appDataPath, 'manifest.json');
 
 if (fs.existsSync(hashKeyPath)) {
-
     global.hashKey = fs.readFileSync(hashKeyPath, 'utf-8');
 } else {
     global.hashKey = '';
@@ -28,8 +28,8 @@ let window;
 let watcher;
 let manifest = [];
 
-if (fs.existsSync('manifest.json')) {
-    manifest = JSON.parse(fs.readFileSync('manifest.json'));
+if (fs.existsSync(manifestPath)) {
+    manifest = JSON.parse(fs.readFileSync(manifestPath));
 }
 
 ipcMain.on('set-hash', (event, arg) => {
@@ -121,5 +121,5 @@ app.on('ready', async () => {
 app.on('window-all-closed', app.quit);
 
 app.on('before-quit', () => {
-    fs.writeFileSync('manifest.json', JSON.stringify(manifest, null, 4));
+    fs.writeFileSync(manifestPath, JSON.stringify(manifest, null, 4));
 });
