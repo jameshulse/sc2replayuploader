@@ -3,6 +3,7 @@ const fs = require('fs');
 const path = require('path');
 const randomstring = require('randomstring');
 const request = require('request');
+const { Notification } = require('electron');
 const appDataPath = require('./appData');
 
 let manifestPath = path.join(appDataPath, 'manifest.json');
@@ -19,7 +20,8 @@ function start(user) {
     let replayPath = `/Users/${user}/Library/Application Support/Blizzard/Starcraft II/Accounts/**/Replays/Multiplayer/*.SC2Replay`;
 
     watcher = chokidar.watch(replayPath, {
-        persistent: true
+        ignoreInitial: true,
+        usePolling: true
     });
 
     watcher.on('add', file => {
@@ -41,9 +43,13 @@ function start(user) {
                 }
             }
         }, (err, httpResponse, body) => {
-            if (err) {
-                console.log(err);
-            }
+            let notification = new Notification({
+                title: err ? 'SC2Stats - Upload failed' : 'SC2Stats - Upload Complete',
+                body: '',
+                silent: true
+            });
+
+            notification.show();
 
             manifest.push(file);
         });
