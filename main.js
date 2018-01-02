@@ -8,8 +8,7 @@ const hashkey = require('./app/hashkey');
 const watch = require('./app/watch');
 const window = require('./app/window');
 const startup = require('./app/startup');
-
-require('./app/menu');
+const createDefaultMenu = require('./app/menu');
 
 global.hashKey = hashkey.load();
 
@@ -34,6 +33,8 @@ app.on('ready', async () => {
 
     tray.create();
     window.create();
+
+    createDefaultMenu();
 
     watch.start(user);
 

@@ -18,7 +18,7 @@ document.querySelector('#cancel').addEventListener('click', () => {
 
 document.querySelector('#save').addEventListener('click', async () => {
     await ipcRenderer.send('set-hash', hashEl.value);
-    await ipcRenderer.send('toggle-startup', autoLaunchEl.checked);
+    //await ipcRenderer.send('toggle-startup', autoLaunchEl.checked);
 
     remote.getCurrentWindow().hide();
 });
